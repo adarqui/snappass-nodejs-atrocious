@@ -5,6 +5,7 @@ var
     ;
 
 var app;
+var key;
 
 // for debugging.
 process.on('uncaughtException', function(err) {
@@ -34,11 +35,39 @@ vows.describe('Tests').addBatch({
             'error should be null': function(err) {
                 assert.equal(err, null);
             },
-            'fini': function(err) {
-                assert.equal(err, null);
-                app.fini();
-            }
-        }
+            'key and password tests: set': {
+                topic: function() {
+                    app.set_password('foo', 'Day', this.callback);
+                },
+                'results': {
+                    'should be 36 bytes in length': function(data) {
+                        assert.equal(data.length, 36);
+                        key = data;
+                    },
+                    'key and password tests: get': {
+                        topic: function() {
+                            app.get_password(key, this.callback);
+                        },
+                        'password should be returned by the previous key': function(err, data) {
+                            assert.equal(err, null);
+                            assert.equal(data, 'foo');
+                        },
+                        'retrieving the password again': {
+                            topic: function() {
+                                app.get_password(key, this.callback);
+                            },
+                            'password should have been deleted in the previous get_password call': function(err, data) {
+                                assert.equal(err, null);
+                                assert.equal(data, null);
+                            },
+                            'fini': function(err) {
+                                app.fini();
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
     'WrapKey' : {
         topic: function() {
