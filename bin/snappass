@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var
+    prettyjson = require('prettyjson'),
+    snappass = require('../snappass')
+    ;
+
+config_path = 'etc/config.json';
+
+if (process.argv.length > 2) {
+    config_path = process.argv[2];
+}
+
+snappass.init(config_path, function(err, snap) {
+    if (err === true) {
+        console.log('Failure:', err);
+        process.exit(err);
+    }
+    console.log(prettyjson.render(snap));
+});
