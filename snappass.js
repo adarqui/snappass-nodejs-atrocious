@@ -60,12 +60,9 @@ var redis_connect = function(state, snap, cb) {
     state.redis = redis.createClient();
     state.redis.select(snap.redis.db, function(err, data) {
         if (snap.redis.auth.length > 0) {
-            state.redis.auth(snap.redis.auth, function(err, data) {
-                cb(null, snap);
-            });
-        } else {
-            cb(null, snap);
+            state.redis.auth(snap.redis.auth, function(err, data) {});
         }
+        cb(null, snap);
     });
 };
 
