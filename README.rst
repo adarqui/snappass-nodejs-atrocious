@@ -1,8 +1,9 @@
 ========
-SnapPass-node.js
+SnapPass-nodejs
 ========
 
 .. image:: https://travis-ci.org/adarqui/snappass-nodejs.png
+
 
 Found this nice little app on pinterest's github. Figured it would be a good candidate for porting to other langs for fun. Front end is not included yet. That will be a separate repo that ob may write. The frontend needs to be an SPA. It needs to be re-done because the backend apps won't support server side templating etc.
 

@@ -9,21 +9,23 @@
   "description": "It's like SnapChat... for passwords.",
   "main": "snappass.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vows --spec test/vows.js",
+    "start": "./bin/snappass"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/adarqui/snappass-nodejs"
   },
   "dependencies": {
-    "async": "0.9.2",
+    "async": "0.9.*",
     "express": "4.12.2",
     "morgan": "1.5.2",
     "uuid": "1.4.2",
     "redis": "0.12.1",
     "hiredis": "*",
     "merge": "1.2.0",
-    "prettyjson": "1.1.0"
+    "prettyjson": "1.1.0",
+    "vows": "0.9.*"
   },
   "keywords": [
     "secrecy",
