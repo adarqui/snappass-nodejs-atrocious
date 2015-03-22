@@ -12,7 +12,9 @@ if (process.argv.length > 2) {
     config_path = process.argv[2];
 }
 
-snappass.init(config_path, function(err, snap) {
+var app = new snappass.SnapPass();
+
+app.init(config_path, function(err) {
     snap_proc.exitIfTrue(err, 1);
-    console.log(prettyjson.render(snap));
+    console.log(prettyjson.render(app.getSnap()));
 });
