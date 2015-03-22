@@ -2,7 +2,8 @@
 
 var
     prettyjson = require('prettyjson'),
-    snappass = require('../snappass')
+    snappass = require('../snappass'),
+    snap_proc = require('../lib/proc')
     ;
 
 config_path = 'etc/config.json';
@@ -12,9 +13,6 @@ if (process.argv.length > 2) {
 }
 
 snappass.init(config_path, function(err, snap) {
-    if (err === true) {
-        console.log('Failure:', err);
-        process.exit(err);
-    }
+    snap_proc.exitIfTrue(err, 1);
     console.log(prettyjson.render(snap));
 });
