@@ -1,3 +1,5 @@
+Instead of pushing commits to fix this repo, i'm leaving it up for historical reasons. It's utter crap. I should have split snappass-nodejs into snappass-nodejs-core. Then put all of the other jank in snappass-backend-sailsjs for example. Similar to how I did it with the golang port.
+
 ========
 SnapPass-nodejs
 ========
